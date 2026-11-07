@@ -1,0 +1,137 @@
+\documentclass[10pt]{article}
+\usepackage[margin=2.2cm]{geometry}
+\usepackage{amsmath,amssymb,amsthm,bm}
+\usepackage[hidelinks]{hyperref}
+\newtheorem{proposition}{Proposition}
+\newtheorem{corollary}{Corollary}
+\theoremstyle{definition}
+\newtheorem{assumption}{Assumption}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\tr}{\operatorname{tr}}
+\title{Spatial Discriminability in Reverberant Rooms\\[2pt]\large Theory note}
+\author{D. Bassett}
+\date{Working draft, \today}
+
+\begin{document}
+\maketitle
+
+\noindent This note sets out the observation model, the cue statistics, and the closed-form results on which the paper rests. The anechoic metric of~\cite{bassett2026} is the limit of no reverberant energy. Code: \texttt{sdr/}; verification: \texttt{tests/test\_model.py}.
+
+\section{Observation model}
+
+A static source at direction $\theta\in S^2$ and distance $r_s$ radiates a stationary Gaussian signal of power spectral density $P(f)$ to a listener whose head is described by directional transfer functions $\bm h(f,\phi)=[h_1,h_2]^{\top}$. In a room the binaural transfer function is a sum over arrivals $k$ (direct path $k=0$, image sources $k\ge1$) with amplitudes $a_k$, delays $\tau_k$ and directions $\phi_k$, all of which depend on $\theta$:
+\begin{equation}
+\bm H(f,\theta)=\sum_k a_k(f)\,e^{-j2\pi f\tau_k}\,\bm h(f,\phi_k).
+\end{equation}
+The auditory system analyses the ear signals in bands $b$ with power responses $|G_b(f)|^2$. The expected band cross-spectral matrix is
+\begin{equation}
+\bm R_b(\theta)=\int |G_b(f)|^2 P(f)\,\bm H\bm H^{\mathsf H}\,df
+=\sum_{k,l} a_k a_l^{*}\int |G_b|^2 P\,\bm h_k\bm h_l^{\mathsf H}e^{-j2\pi f(\tau_k-\tau_l)}\,df .
+\label{eq:Rb}
+\end{equation}
+
+\begin{proposition}[Coherence window]\label{prop:window}
+If $P$, $a_k$ and $\bm h_k$ vary slowly across band $b$, the pair $(k,l)$ contributes $a_ka_l^{*}\,\bm h_k\bm h_l^{\mathsf H}\,e^{-j2\pi f_b\Delta\tau}\,\kappa_b(\Delta\tau)\,S_b$ to $\bm R_b$, where $\Delta\tau=\tau_k-\tau_l$, $S_b=\int|G_b|^2P\,df$, and for a fourth-order gammatone with bandwidth $\beta_b=1.019\,\mathrm{ERB}(f_b)$
+\begin{equation}
+\kappa_b(\Delta\tau)=e^{-s}\Big(1+s+\tfrac{2}{5}s^2+\tfrac{1}{15}s^3\Big),\qquad s=2\pi\beta_b|\Delta\tau|.
+\end{equation}
+$\kappa_b$ falls to one half at $|\Delta\tau|\approx0.45/\mathrm{ERB}(f_b)$: about 6~ms at 500~Hz, 3.4~ms at 1~kHz, and 1~ms at 4~kHz.
+\end{proposition}
+\begin{proof}
+$|G_b(f)|^2=(1+((f-f_b)/\beta_b)^2)^{-4}$; its Fourier transform is the Mat\'ern-$7/2$ covariance above, modulated by $e^{-j2\pi f_b\Delta\tau}$.
+\end{proof}
+
+Arrivals separated by less than the coherence window add coherently within a band and shape the cue \emph{means}; arrivals separated by more add in power and reduce interaural \emph{coherence}. The boundary between early and late energy is therefore a property of the auditory filter, $0.45/\mathrm{ERB}(f)$, and not a fixed time such as 50 or 80~ms. When the late field is dense and isotropic, its incoherent sum tends to the diffuse-field matrix of the same head,
+\begin{equation}
+\bm\Gamma(f)=\int_{S^2}\bm h(f,\phi)\bm h(f,\phi)^{\mathsf H}\,\frac{d\phi}{4\pi},
+\end{equation}
+so that, with source power normalised to one and an omnidirectional direct-to-reverberant ratio $\mathrm{DRR}=1/\eta$,
+\begin{equation}
+\bm R(f,\theta)=\bm h_e(f,\theta)\bm h_e(f,\theta)^{\mathsf H}+\eta\,\bm\Gamma(f),
+\label{eq:R}
+\end{equation}
+where $\bm h_e$ is the direct path plus the coherent early arrivals. The pilot below uses $\bm h_e=\bm h(\cdot,\theta)$.
+
+\section{Cues and their statistics}
+
+The cues are those of the Barumerli observer~\cite{barumerli2023}, written as functionals of $\bm R$: band levels $L_{i,b}=5\log_{10}S_{i,b}$ with $S_{i,b}=\int|G_b|^2R_{ii}\,df$ and their positive one-ERB gradients; the broadband level difference $\mathrm{ILD}=10\log_{10}(\int R_{11}/\int R_{22})$; and the interaural time difference $\tau^{*}$ at the peak of the envelope of the low-passed cross-correlation, $|\int_0^\infty L(f)R_{12}(f)e^{j2\pi f\tau}df|$, on the Reijniers JND scale. The factor 5 in $L_{i,b}$ reproduces the half-wave-rectified level of~\cite{barumerli2023}, whose gradient energy it matches to within 11\% (Section~\ref{sec:check}).
+
+\begin{assumption}[Internal noise as decorrelation]\label{ass:noise}
+Internal noise on the interaural cues acts as an internal coherence ceiling $\rho\in(0,1)$: an interaural cue estimated from signals of coherence $\gamma$ behaves as if their coherence were $\rho\gamma$. Its variance is the anechoic variance $\sigma^2$ of~\cite{bassett2026} times the ratio of estimator variances at coherence $\rho\gamma$ and $\rho$.
+\end{assumption}
+
+With $\gamma(f,\theta)=R_{12}/\sqrt{R_{11}R_{22}}$ this gives, by the Knapp--Carter bound for the delay and the delta method for the level ratio,
+\begin{align}
+v_{\mathrm{ITD}}&=\sigma_{\mathrm{ITD}}^2\,\frac{\int L\,\omega^2\,\rho^2/(1-\rho^2)\,df}{\int L\,\omega^2\,\rho^2|\gamma|^2/(1-\rho^2|\gamma|^2)\,df},\\
+v_{\mathrm{ILD}}&=\sigma_{\mathrm{ILD}}^2\,\frac{V(\bm R)}{V(\bm R_{\mathrm{an}})},\quad
+V(\bm R)=\int\Big[\tfrac{R_{11}^2}{S_1^2}+\tfrac{R_{22}^2}{S_2^2}-\tfrac{2\rho^2|R_{12}|^2}{S_1S_2}\Big]df .
+\end{align}
+The monaural cues keep their anechoic variance $\sigma_{\mathrm{mon}}^2$: for a Gaussian signal the relative fluctuation of a band power depends on the bandwidth--duration product, not on the room. The sample-size factor is common to numerator and denominator, so the duration of the stimulus does not enter; $\rho$ is the only free parameter.
+
+\subsection{Fisher metric}
+For independent Gaussian cues with means $\mu_m(\theta)$ and variances $v_m(\theta)$,
+\begin{equation}
+G_{ij}(\theta)=\sum_m\frac{\partial_i\mu_m\,\partial_j\mu_m}{v_m}+\frac12\sum_m\partial_i\log v_m\,\partial_j\log v_m .
+\label{eq:G}
+\end{equation}
+\begin{proposition}[Anechoic limit]
+As $\eta\to0$, $\gamma\to1$, $v_m\to\sigma_m^2$, the second term vanishes, and $G$ is the anechoic metric.
+\end{proposition}
+
+\section{Closed-form consequences of the diffuse model}
+
+Write $D_{i,b}(\theta)=S^{\mathrm{dir}}_{i,b}(\theta)/(\eta\,\Gamma_{ii,b})$ for the \emph{local} DRR of ear $i$ in band $b$: direct over diffuse power after head filtering.
+
+\begin{proposition}[Level compression]\label{prop:mon}
+$\partial L^{\mathrm{room}}_{i,b}=\dfrac{D_{i,b}}{1+D_{i,b}}\,\partial L^{\mathrm{an}}_{i,b}$, and each spectral gradient combines the compression factors of its two bands.
+\end{proposition}
+\begin{proof}
+$\eta\Gamma_{ii,b}$ does not depend on $\theta$, so $\partial\log(S^{\mathrm{dir}}+\eta\Gamma)=\partial S^{\mathrm{dir}}/(S^{\mathrm{dir}}+\eta\Gamma)$.
+\end{proof}
+\begin{corollary}[Notch filling]
+Bands where the direct spectrum is low, at pinna notches and at the shadowed ear, have the lowest local DRR and lose spectral-cue information first. Elevation acuity is set by the local DRR in the notch region, not by the broadband DRR.
+\end{corollary}
+
+\begin{proposition}[ILD compression]\label{prop:ild}
+$\partial\,\mathrm{ILD}^{\mathrm{room}}=\frac{10}{\ln10}\big(\alpha_1\partial\log S_1^{\mathrm{dir}}-\alpha_2\partial\log S_2^{\mathrm{dir}}\big)$ with broadband $\alpha_i=D_i/(1+D_i)$, and $|\mathrm{ILD}^{\mathrm{room}}|\le10\log_{10}(1+D_{\mathrm{near}})+\mathrm{ILD}_{\mathrm{diffuse}}$.
+\end{proposition}
+For a lateral source the far ear is shadowed, its local DRR is small, and its contribution to the ILD slope vanishes first: ILD is compressed most for lateral sources, as measured by Shinn-Cunningham et al.~\cite{shinn2005}.
+
+\begin{proposition}[Interaural coherence]\label{prop:coh}
+For a source in the median plane of a left--right symmetric head, $|h_1|=|h_2|$ and $\Gamma_{11}=\Gamma_{22}$, so
+\begin{equation}
+\gamma=\frac{D\,e^{j\varphi}+\gamma_d}{D+1},
+\end{equation}
+with $\gamma_d=\Gamma_{12}/\Gamma_{11}$ the diffuse-field coherence of the head and $\varphi$ the interaural phase of the direct path.
+\end{proposition}
+At low frequencies $\gamma_d\to1$ and reverberation leaves the coherence high but pulls the interaural phase towards zero; at high frequencies $\gamma_d\to0$ and coherence falls as $D/(D+1)$. The ITD cue therefore loses information through two mechanisms with opposite frequency dependence: bias at low frequencies and variance at high.
+
+\begin{proposition}[Critical DRR]
+The ITD variance doubles relative to anechoic when $\rho^2|\gamma|^2/(1-\rho^2|\gamma|^2)=\tfrac12\rho^2/(1-\rho^2)$ over the ITD band, i.e.\ at $|\gamma|^{2}=1/(2-\rho^2)$. With Proposition~\ref{prop:coh} and $\gamma_d\approx0$ this gives $D^{*}=|\gamma^*|/(1-|\gamma^*|)$: about 13~dB for $\rho=0.95$ and 8~dB for $\rho=0.8$.
+\end{proposition}
+
+\section{Predictions}
+\begin{enumerate}
+\item Thresholds in azimuth and elevation rise smoothly with falling DRR, with a knee near the critical DRR; elevation thresholds depend on the local DRR of the notch bands and not on interaural coherence.
+\item Azimuth acuity is lost faster for lateral than for frontal sources at moderate DRR, through ILD compression at the shadowed ear.
+\item The weight of the cues shifts with DRR: frontally, the ITD share of the information falls and the spectral share rises.
+\item Reflections within $0.45/\mathrm{ERB}(f)$ of the direct sound bias cues rather than decorrelate them; the window shortens with frequency.
+\item Acuity maps across a room follow the local DRR and interaural coherence at each position, not reverberation time alone.
+\end{enumerate}
+
+\section{Pilot (E1): direct path plus diffuse field}
+Forty-one SONICOM heads, $\rho\in\{0.8,0.95,0.99\}$, DRR from $\infty$ to $-10$~dB (\texttt{experiments/e1\_drr.py}). At $\rho=0.95$ the median threshold at $d'=1$ in azimuth rises from $1.6^\circ$ to $2.1^\circ$, $4.5^\circ$ and $20^\circ$ at 10, 0 and $-10$~dB for a frontal source, and from $7.6^\circ$ to $10.3^\circ$, $15.3^\circ$ and $42^\circ$ at $90^\circ$; in elevation at the front it rises from $4.0^\circ$ to $4.8^\circ$, $8.2^\circ$ and $29^\circ$, independently of $\rho$. Frontally the share of the information carried by the ITD falls from 32\% to 10\% at 0~dB, while the spectral share rises from 14\% to 30\%.
+
+Recomputing the metric with room means and anechoic variances (compression only), and with anechoic means and room variances (inflation only), separates the two mechanisms (\texttt{experiments/e4\_mechanism.py}, 20 heads). For a frontal source $\sqrt{\det G}$ falls to 0.65 of its anechoic value at 10~dB: 0.82 from compression and 0.80 from inflation, whose product, 0.66, matches the full model. Inflation saturates once the interaural cues are lost (0.44--0.68 of anechoic, the share left to the spectral cues), whereas compression continues to fall (0.40 at 0~dB, 0.09 at $-10$~dB). At $90^\circ$ inflation has no effect and the loss is compression alone. Below about 5~dB the room therefore acts mainly by biasing the cues rather than by making them noisier.
+
+\section{Consistency with the anechoic metric}\label{sec:check}
+With $\eta=0$ the spectral-domain cues reproduce the time-domain cues of~\cite{bassett2026} for nine SONICOM heads (\texttt{experiments/e0\_anechoic.py}): ILD and ITD correlate at $1.000$ with gradient energy within 2\%; the spectral gradients correlate at 0.86--0.90 with gradient energy within 11\%. $\sqrt{\det G}$ agrees within 5\% and tensor shape to a median affine-invariant distance of 0.12--0.15.
+
+\begin{thebibliography}{9}
+\bibitem{bassett2026} D. Bassett, ``Evaluating spatial discriminability preservation in HRTF upsampling using Fisher information,'' 2026.
+\bibitem{barumerli2023} R. Barumerli, P. Majdak, M. Geronazzo, D. Meijer, F. Avanzini, and R. Baumgartner, ``A Bayesian model for human directional localization of broadband static sound sources,'' \emph{Acta Acustica}, vol. 7, 12, 2023.
+\bibitem{knapp1976} C. H. Knapp and G. C. Carter, ``The generalized correlation method for estimation of time delay,'' \emph{IEEE Trans. Acoust., Speech, Signal Process.}, vol. 24, no. 4, pp. 320--327, 1976.
+\bibitem{shinn2005} B. G. Shinn-Cunningham, N. Kopčo, and T. J. Martin, ``Localizing nearby sound sources in a classroom: Binaural room impulse responses,'' \emph{J. Acoust. Soc. Am.}, vol. 117, no. 5, pp. 3100--3115, 2005.
+\bibitem{rakerd2010} B. Rakerd and W. M. Hartmann, ``Localization of sound in rooms. V. Binaural coherence and human sensitivity to interaural time differences in noise,'' \emph{J. Acoust. Soc. Am.}, vol. 128, no. 5, pp. 3052--3063, 2010.
+\end{thebibliography}
+\end{document}

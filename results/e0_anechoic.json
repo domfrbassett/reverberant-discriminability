@@ -1,0 +1,164 @@
+[
+ {
+  "subject": 1,
+  "airm_median": 0.11973009278168256,
+  "airm_p90": 0.2451603861125717,
+  "sqrtdet_ratio_median": 0.9794405222878103,
+  "spectral": {
+   "gradient_energy_ratio": 0.9499760098622995,
+   "cue_correlation": 0.8695698124362208
+  },
+  "ild": {
+   "gradient_energy_ratio": 0.9999957858340893,
+   "cue_correlation": 0.9999999999994733
+  },
+  "itd": {
+   "gradient_energy_ratio": 0.9988032701569068,
+   "cue_correlation": 0.999574313897838
+  }
+ },
+ {
+  "subject": 21,
+  "airm_median": 0.1386897014030707,
+  "airm_p90": 0.2991188932525583,
+  "sqrtdet_ratio_median": 1.0370131807889524,
+  "spectral": {
+   "gradient_energy_ratio": 1.0577541195072766,
+   "cue_correlation": 0.9040296518906992
+  },
+  "ild": {
+   "gradient_energy_ratio": 0.9999960747097177,
+   "cue_correlation": 0.999999999999644
+  },
+  "itd": {
+   "gradient_energy_ratio": 0.9951888780187088,
+   "cue_correlation": 0.9996252619647658
+  }
+ },
+ {
+  "subject": 47,
+  "airm_median": 0.11834386630160959,
+  "airm_p90": 0.2282971907217485,
+  "sqrtdet_ratio_median": 1.0022555134483424,
+  "spectral": {
+   "gradient_energy_ratio": 0.9933122042745782,
+   "cue_correlation": 0.8917827438885674
+  },
+  "ild": {
+   "gradient_energy_ratio": 0.9999960016099114,
+   "cue_correlation": 0.9999999999996876
+  },
+  "itd": {
+   "gradient_energy_ratio": 1.0098596374764863,
+   "cue_correlation": 0.99965445811665
+  }
+ },
+ {
+  "subject": 70,
+  "airm_median": 0.12356593074547421,
+  "airm_p90": 0.23637799662676512,
+  "sqrtdet_ratio_median": 0.980687667980043,
+  "spectral": {
+   "gradient_energy_ratio": 0.9711338867986743,
+   "cue_correlation": 0.8866199423894338
+  },
+  "ild": {
+   "gradient_energy_ratio": 0.9999953351379743,
+   "cue_correlation": 0.9999999999994008
+  },
+  "itd": {
+   "gradient_energy_ratio": 1.0115705169914118,
+   "cue_correlation": 0.9996754603910419
+  }
+ },
+ {
+  "subject": 98,
+  "airm_median": 0.14621896062365047,
+  "airm_p90": 0.3268497037418702,
+  "sqrtdet_ratio_median": 0.999815261917263,
+  "spectral": {
+   "gradient_energy_ratio": 1.0107848858671782,
+   "cue_correlation": 0.8620601326433216
+  },
+  "ild": {
+   "gradient_energy_ratio": 0.999995093042743,
+   "cue_correlation": 0.9999999999994218
+  },
+  "itd": {
+   "gradient_energy_ratio": 1.00529150832102,
+   "cue_correlation": 0.999626556417721
+  }
+ },
+ {
+  "subject": 122,
+  "airm_median": 0.13383735202666558,
+  "airm_p90": 0.2577022028902809,
+  "sqrtdet_ratio_median": 0.9980322323922076,
+  "spectral": {
+   "gradient_energy_ratio": 0.9769756111669902,
+   "cue_correlation": 0.8672089386467737
+  },
+  "ild": {
+   "gradient_energy_ratio": 0.9999947784625376,
+   "cue_correlation": 0.9999999999995739
+  },
+  "itd": {
+   "gradient_energy_ratio": 1.015388693290115,
+   "cue_correlation": 0.9996752397490272
+  }
+ },
+ {
+  "subject": 145,
+  "airm_median": 0.1536828641531631,
+  "airm_p90": 0.29357382436326607,
+  "sqrtdet_ratio_median": 0.9509430186821746,
+  "spectral": {
+   "gradient_energy_ratio": 0.8909987438385042,
+   "cue_correlation": 0.8575121974084493
+  },
+  "ild": {
+   "gradient_energy_ratio": 0.9999950382004024,
+   "cue_correlation": 0.9999999999990683
+  },
+  "itd": {
+   "gradient_energy_ratio": 1.0215796570383087,
+   "cue_correlation": 0.9995697850214154
+  }
+ },
+ {
+  "subject": 171,
+  "airm_median": 0.12535697795248707,
+  "airm_p90": 0.2723649610270572,
+  "sqrtdet_ratio_median": 1.002638386221538,
+  "spectral": {
+   "gradient_energy_ratio": 0.9860124051501422,
+   "cue_correlation": 0.8892612647239807
+  },
+  "ild": {
+   "gradient_energy_ratio": 0.9999955352479615,
+   "cue_correlation": 0.999999999999432
+  },
+  "itd": {
+   "gradient_energy_ratio": 1.0141821600911047,
+   "cue_correlation": 0.9996743494986907
+  }
+ },
+ {
+  "subject": 199,
+  "airm_median": 0.14616389470320207,
+  "airm_p90": 0.29511319705338357,
+  "sqrtdet_ratio_median": 0.9897073832572655,
+  "spectral": {
+   "gradient_energy_ratio": 0.9887005985478365,
+   "cue_correlation": 0.8900691526465787
+  },
+  "ild": {
+   "gradient_energy_ratio": 0.9999947746229481,
+   "cue_correlation": 0.9999999999995355
+  },
+  "itd": {
+   "gradient_energy_ratio": 1.011550036678528,
+   "cue_correlation": 0.9996185101730196
+  }
+ }
+]

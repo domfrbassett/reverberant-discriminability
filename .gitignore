@@ -1,0 +1,7 @@
+__pycache__/
+*.pyc
+results/e1_drr/*.npz
+results/*.log
+theory/*.aux
+theory/*.log
+theory/*.out
