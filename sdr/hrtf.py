@@ -15,16 +15,20 @@ NFFT = 4096
 ROOT = Path(__file__).resolve().parents[1]
 SOFA_ROOT = Path(os.environ.get("SDR_SONICOM_ROOT")
                  or ROOT.parent / "perceptual-hrtf-sampling" / "dependencies" / "Sonicom_HRTFs")
+EXCLUDED = frozenset({203})  # corrupted SONICOM measurements
 
 
 def sofa_path(sid: int) -> Path:
+    if sid in EXCLUDED:
+        raise ValueError(f"SONICOM subject {sid} is excluded (corrupted).")
     name = f"P{sid:04d}_FreeFieldCompMinPhase_48kHz.sofa"
     p = SOFA_ROOT / f"P{sid:04d}" / "HRTF" / "HRTF" / "48kHz" / name
     return p if p.exists() else next(SOFA_ROOT.rglob(name))
 
 
 def available_subjects() -> list[int]:
-    return sorted(int(p.name[1:5]) for p in SOFA_ROOT.rglob("*_FreeFieldCompMinPhase_48kHz.sofa"))
+    found = (int(p.name[1:5]) for p in SOFA_ROOT.rglob("*_FreeFieldCompMinPhase_48kHz.sofa"))
+    return sorted(s for s in found if s not in EXCLUDED)
 
 
 def load_sofa(sid: int):

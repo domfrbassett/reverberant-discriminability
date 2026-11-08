@@ -108,6 +108,8 @@ def main():
         ax.set_xticklabels(["∞" if np.isinf(v) else f"{v:g}" for v in shown])
         ax.set_xlabel("DRR (dB)")
         ax.invert_xaxis()
+    for ax, letter in zip(axes, "abc"):
+        ax.text(-0.22, 1.04, f"({letter})", transform=ax.transAxes, fontsize=8)
     fig.savefig(FIG / "e1_drr.pdf", bbox_inches="tight")
     fig.savefig(FIG / "e1_drr.png", dpi=200, bbox_inches="tight")
 

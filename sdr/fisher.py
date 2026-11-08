@@ -85,3 +85,24 @@ def elevation_vector(r: np.ndarray) -> np.ndarray:
     az = np.arctan2(r[:, 1], r[:, 0])
     el = np.arcsin(np.clip(r[:, 2], -1, 1))
     return np.stack([-np.sin(el) * np.cos(az), -np.sin(el) * np.sin(az), np.cos(el)], 1)
+
+
+def arc_derivative(theta: np.ndarray, y: np.ndarray, half_width: float = np.radians(20)) -> np.ndarray:
+    """d y / d theta on a 1-D arc by local quadratic regression over +-half_width (radians)."""
+    out = np.empty_like(y, dtype=float)
+    for i, t in enumerate(theta):
+        m = np.abs(theta - t) <= half_width + 1e-9
+        d = theta[m] - t
+        V = np.column_stack([np.ones_like(d), d, d ** 2])
+        out[i] = np.linalg.lstsq(V, y[m], rcond=None)[0][1]
+    return out
+
+
+def arc_information(theta: np.ndarray, q: np.ndarray, var: np.ndarray,
+                    half_width: float = np.radians(20), var_floor: float = 1e-12) -> np.ndarray:
+    """Fisher information (per rad^2) along a 1-D arc of directions theta (D,), cues q, var (D, M)."""
+    v = np.maximum(var, var_floor)
+    J = arc_derivative(theta, q, half_width)
+    lv = np.log(v)
+    K = arc_derivative(theta, lv[:, np.ptp(lv, axis=0) > 1e-9], half_width)
+    return (J ** 2 / v).sum(1) + 0.5 * (K ** 2).sum(1)

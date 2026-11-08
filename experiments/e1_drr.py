@@ -1,6 +1,6 @@
 """E1 pilot: Fisher metric over source direction against direct-to-reverberant ratio.
 
-Direct path plus diffuse late field, every fourth available SONICOM subject.
+Direct path plus diffuse late field, all available SONICOM subjects.
 Output: results/e1_drr/subject_XXXX.npz
 """
 from __future__ import annotations
@@ -14,9 +14,9 @@ import numpy as np
 from sdr import cues, fisher, hrtf, room
 
 OUT = Path(__file__).resolve().parents[1] / "results" / "e1_drr"
-SUBJECTS = hrtf.available_subjects()[::4]
+SUBJECTS = hrtf.available_subjects()
 DRR_DB = [np.inf, 20.0, 15.0, 10.0, 5.0, 0.0, -5.0, -10.0]
-RHO = [0.95, 0.8, 0.99]
+RHO = [0.984, 0.978, 0.989]
 
 
 def run(sid: int) -> str:

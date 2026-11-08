@@ -1,0 +1,117 @@
+{
+ "subjects": 12,
+ "configs": {
+  "a0.1_centre_stationary": {
+   "drr_db": -3.1,
+   "front_deg": 7.14,
+   "left 90_deg": 18.03,
+   "right 90_deg": 18.55,
+   "elevation front_deg": 10.61,
+   "gamma_front": 0.553
+  },
+  "a0.1_centre_weighted": {
+   "drr_db": -3.1,
+   "front_deg": 7.15,
+   "left 90_deg": 18.0,
+   "right 90_deg": 18.29,
+   "elevation front_deg": 10.75,
+   "gamma_front": 0.546
+  },
+  "a0.1_side_stationary": {
+   "drr_db": -3.1,
+   "front_deg": 7.44,
+   "left 90_deg": 17.4,
+   "right 90_deg": 15.78,
+   "elevation front_deg": 10.94,
+   "gamma_front": 0.45
+  },
+  "a0.1_side_weighted": {
+   "drr_db": -3.1,
+   "front_deg": 7.26,
+   "left 90_deg": 17.4,
+   "right 90_deg": 17.19,
+   "elevation front_deg": 10.91,
+   "gamma_front": 0.461
+  },
+  "a0.1_corner_stationary": {
+   "drr_db": -3.1,
+   "front_deg": 7.5,
+   "left 90_deg": 16.86,
+   "right 90_deg": 15.59,
+   "elevation front_deg": 10.9,
+   "gamma_front": 0.449
+  },
+  "a0.1_corner_weighted": {
+   "drr_db": -3.1,
+   "front_deg": 7.31,
+   "left 90_deg": 17.21,
+   "right 90_deg": 16.68,
+   "elevation front_deg": 10.8,
+   "gamma_front": 0.457
+  },
+  "a0.1_diffuse": {
+   "drr_db": -3.1,
+   "front_deg": 8.05,
+   "left 90_deg": 18.42,
+   "right 90_deg": 18.21,
+   "elevation front_deg": 11.53,
+   "gamma_front": 0.384
+  },
+  "a0.3_centre_stationary": {
+   "drr_db": 2.8,
+   "front_deg": 3.26,
+   "left 90_deg": 12.05,
+   "right 90_deg": 12.92,
+   "elevation front_deg": 6.52,
+   "gamma_front": 0.881
+  },
+  "a0.3_centre_weighted": {
+   "drr_db": 2.8,
+   "front_deg": 3.23,
+   "left 90_deg": 11.85,
+   "right 90_deg": 12.61,
+   "elevation front_deg": 6.53,
+   "gamma_front": 0.879
+  },
+  "a0.3_side_stationary": {
+   "drr_db": 2.8,
+   "front_deg": 3.79,
+   "left 90_deg": 11.16,
+   "right 90_deg": 11.82,
+   "elevation front_deg": 6.96,
+   "gamma_front": 0.732
+  },
+  "a0.3_side_weighted": {
+   "drr_db": 2.8,
+   "front_deg": 3.49,
+   "left 90_deg": 11.28,
+   "right 90_deg": 11.92,
+   "elevation front_deg": 6.71,
+   "gamma_front": 0.771
+  },
+  "a0.3_corner_stationary": {
+   "drr_db": 2.8,
+   "front_deg": 3.86,
+   "left 90_deg": 11.08,
+   "right 90_deg": 11.25,
+   "elevation front_deg": 7.09,
+   "gamma_front": 0.729
+  },
+  "a0.3_corner_weighted": {
+   "drr_db": 2.8,
+   "front_deg": 3.51,
+   "left 90_deg": 11.06,
+   "right 90_deg": 11.89,
+   "elevation front_deg": 6.77,
+   "gamma_front": 0.766
+  },
+  "a0.3_diffuse": {
+   "drr_db": 2.8,
+   "front_deg": 4.11,
+   "left 90_deg": 12.47,
+   "right 90_deg": 12.94,
+   "elevation front_deg": 7.03,
+   "gamma_front": 0.673
+  }
+ }
+}

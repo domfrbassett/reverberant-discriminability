@@ -1,0 +1,92 @@
+{
+ "subjects": [
+  1,
+  99
+ ],
+ "rooms": {
+  "lecture": {
+   "L": [
+    20.0,
+    15.0,
+    6.0
+   ],
+   "alpha": 0.3,
+   "rt60_s": 0.8,
+   "n_seats": 67,
+   "drr_db_range": [
+    -15.6,
+    -0.2
+   ],
+   "az_deg_range": [
+    5.06,
+    38.27
+   ],
+   "el_deg_range": [
+    9.38,
+    119.22
+   ],
+   "az_deg_median": 18.36,
+   "el_deg_median": 40.91,
+   "az_anechoic_deg_median": 1.76,
+   "loss_r2_on_drr_quadratic": 0.982,
+   "loss_residual_sd": 0.177,
+   "corr_az_log_with_drr": -0.983
+  },
+  "dining": {
+   "L": [
+    30.0,
+    20.0,
+    3.5
+   ],
+   "alpha": 0.2,
+   "rt60_s": 0.98,
+   "n_seats": 69,
+   "drr_db_range": [
+    -15.6,
+    -0.0
+   ],
+   "az_deg_range": [
+    4.39,
+    32.22
+   ],
+   "el_deg_range": [
+    9.05,
+    87.7
+   ],
+   "az_deg_median": 19.8,
+   "el_deg_median": 51.68,
+   "az_anechoic_deg_median": 1.78,
+   "loss_r2_on_drr_quadratic": 0.959,
+   "loss_residual_sd": 0.193,
+   "corr_az_log_with_drr": -0.96
+  },
+  "concert": {
+   "L": [
+    40.0,
+    24.0,
+    16.0
+   ],
+   "alpha": 0.25,
+   "rt60_s": 2.17,
+   "n_seats": 59,
+   "drr_db_range": [
+    -16.6,
+    0.6
+   ],
+   "az_deg_range": [
+    3.93,
+    39.72
+   ],
+   "el_deg_range": [
+    7.85,
+    127.12
+   ],
+   "az_deg_median": 18.73,
+   "el_deg_median": 40.02,
+   "az_anechoic_deg_median": 1.76,
+   "loss_r2_on_drr_quadratic": 0.984,
+   "loss_residual_sd": 0.176,
+   "corr_az_log_with_drr": -0.985
+  }
+ }
+}

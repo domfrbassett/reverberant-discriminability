@@ -1,0 +1,191 @@
+{
+ "rho": 0.984,
+ "Ts_ms": 5.6,
+ "source_azimuth_deg": {
+  "3": 8.53,
+  "4": 3.8,
+  "5": -3.8,
+  "6": -8.53,
+  "7": 0.0
+ },
+ "late_coherence_summary": 0.178,
+ "loudspeakers": {
+  "LS3": {
+   "drr_db_median": -0.9,
+   "late_energy_fraction_median": 0.461,
+   "threshold_deg_front": {
+    "direct": 1.81,
+    "measured": 6.53,
+    "diffuse": 7.65,
+    "early_diffuse": 6.64,
+    "measured_w": 6.45,
+    "diffuse_w": 7.47,
+    "early_diffuse_w": 6.55
+   },
+   "threshold_deg_median_interior": {
+    "direct": 1.9,
+    "measured": 7.04,
+    "diffuse": 8.15,
+    "early_diffuse": 7.37,
+    "measured_w": 6.99,
+    "diffuse_w": 8.05,
+    "early_diffuse_w": 7.33
+   },
+   "coherence_front": {
+    "direct": 0.963,
+    "measured": 0.674,
+    "diffuse": 0.567,
+    "early_diffuse": 0.665,
+    "measured_w": 0.673,
+    "diffuse_w": 0.575,
+    "early_diffuse_w": 0.664
+   }
+  },
+  "LS4": {
+   "drr_db_median": -2.65,
+   "late_energy_fraction_median": 0.447,
+   "threshold_deg_front": {
+    "direct": 1.82,
+    "measured": 7.1,
+    "diffuse": 8.97,
+    "early_diffuse": 7.58,
+    "measured_w": 7.05,
+    "diffuse_w": 8.81,
+    "early_diffuse_w": 7.53
+   },
+   "threshold_deg_median_interior": {
+    "direct": 1.89,
+    "measured": 7.56,
+    "diffuse": 8.83,
+    "early_diffuse": 7.93,
+    "measured_w": 7.49,
+    "diffuse_w": 8.72,
+    "early_diffuse_w": 7.91
+   },
+   "coherence_front": {
+    "direct": 0.961,
+    "measured": 0.656,
+    "diffuse": 0.513,
+    "early_diffuse": 0.62,
+    "measured_w": 0.656,
+    "diffuse_w": 0.519,
+    "early_diffuse_w": 0.62
+   }
+  },
+  "LS5": {
+   "drr_db_median": -3.02,
+   "late_energy_fraction_median": 0.422,
+   "threshold_deg_front": {
+    "direct": 1.86,
+    "measured": 8.07,
+    "diffuse": 10.72,
+    "early_diffuse": 8.87,
+    "measured_w": 8.05,
+    "diffuse_w": 10.56,
+    "early_diffuse_w": 8.86
+   },
+   "threshold_deg_median_interior": {
+    "direct": 1.88,
+    "measured": 8.47,
+    "diffuse": 10.29,
+    "early_diffuse": 8.7,
+    "measured_w": 8.43,
+    "diffuse_w": 10.14,
+    "early_diffuse_w": 8.65
+   },
+   "coherence_front": {
+    "direct": 0.989,
+    "measured": 0.687,
+    "diffuse": 0.505,
+    "early_diffuse": 0.621,
+    "measured_w": 0.691,
+    "diffuse_w": 0.511,
+    "early_diffuse_w": 0.624
+   }
+  },
+  "LS6": {
+   "drr_db_median": -1.59,
+   "late_energy_fraction_median": 0.473,
+   "threshold_deg_front": {
+    "direct": 1.96,
+    "measured": 8.02,
+    "diffuse": 10.1,
+    "early_diffuse": 8.67,
+    "measured_w": 7.91,
+    "diffuse_w": 9.82,
+    "early_diffuse_w": 8.57
+   },
+   "threshold_deg_median_interior": {
+    "direct": 2.01,
+    "measured": 7.83,
+    "diffuse": 9.13,
+    "early_diffuse": 8.25,
+    "measured_w": 7.72,
+    "diffuse_w": 8.93,
+    "early_diffuse_w": 8.15
+   },
+   "coherence_front": {
+    "direct": 0.996,
+    "measured": 0.711,
+    "diffuse": 0.6,
+    "early_diffuse": 0.683,
+    "measured_w": 0.714,
+    "diffuse_w": 0.61,
+    "early_diffuse_w": 0.687
+   }
+  },
+  "LS7": {
+   "drr_db_median": -2.56,
+   "late_energy_fraction_median": 0.509,
+   "threshold_deg_front": {
+    "direct": 1.82,
+    "measured": 6.81,
+    "diffuse": 10.02,
+    "early_diffuse": 8.37,
+    "measured_w": 6.75,
+    "diffuse_w": 9.83,
+    "early_diffuse_w": 8.3
+   },
+   "threshold_deg_median_interior": {
+    "direct": 1.86,
+    "measured": 7.3,
+    "diffuse": 9.66,
+    "early_diffuse": 8.52,
+    "measured_w": 7.31,
+    "diffuse_w": 9.5,
+    "early_diffuse_w": 8.46
+   },
+   "coherence_front": {
+    "direct": 0.986,
+    "measured": 0.81,
+    "diffuse": 0.533,
+    "early_diffuse": 0.674,
+    "measured_w": 0.809,
+    "diffuse_w": 0.539,
+    "early_diffuse_w": 0.67
+   }
+  }
+ },
+ "pooled": {
+  "diffuse": {
+   "median_abs_log_error": 0.167,
+   "median_log_bias": 0.167,
+   "p90_abs_log_error": 0.256
+  },
+  "early_diffuse": {
+   "median_abs_log_error": 0.037,
+   "median_log_bias": 0.036,
+   "p90_abs_log_error": 0.101
+  },
+  "diffuse_w": {
+   "median_abs_log_error": 0.157,
+   "median_log_bias": 0.157,
+   "p90_abs_log_error": 0.245
+  },
+  "early_diffuse_w": {
+   "median_abs_log_error": 0.038,
+   "median_log_bias": 0.037,
+   "p90_abs_log_error": 0.102
+  }
+ }
+}
